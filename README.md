@@ -3,7 +3,7 @@
 # How to use my configs?
 Replace your `~/.emacs.d/init.el` and `~/.spacemacs` files with mine or simply nitpick what you like.
 
-Evaluate code blocks with `M-x e` and run `M-x restart-org-mode` command.
+Evaluate code blocks with `C-x e` and run `M-x restart-org-mode` command.
 
 # Emacs Doom > Spacemacs?
 I'm switching to Emacs Doom from Spacemacs. Doom should give me a better programming environment with features such as a sidebar as we all have grown accustomed to from VSCode.
