@@ -34,11 +34,6 @@
   (unless (server-running-p) (server-start)))
 
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-
-
 (global-set-key (kbd "C-u") 'undo)
 ;;C-r search-backward
 (global-set-key (kbd "C-r") 'redo)
@@ -55,6 +50,7 @@
 (global-set-key (kbd "M-a") 'beginning-of-buffer)
 
 (global-set-key (kbd "C-c C-e") 'org-export-dispatch)
+(add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))
 
 (eval-after-load "org"
   '(require 'ox-md nil t))
@@ -90,7 +86,7 @@
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+;;(package-initialize)
 
 (defun indent-file ()
   "Run org babel codeblock formatting in sequence."
@@ -104,4 +100,12 @@
 (global-set-key (kbd "C-;") 'goto-last-change)
 
 
+
 (setq org-toggle-inline-image nil)
+
+(defun markdown-convert-buffer-to-org ()
+  "Convert the current buffer's content from markdown to orgmode format and save it with the current buffer's file name but with .org extension."
+  (interactive)
+  (shell-command-on-region (point-min) (point-max)
+                           (format "pandoc -f markdown -t org -o %s"
+                                   (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
