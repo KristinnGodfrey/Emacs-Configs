@@ -77,10 +77,14 @@
 (global-set-key (kbd "C-;") 'goto-last-change)
 (global-set-key (kbd "C-p") 'previous-line)
 (global-set-key (kbd "C-n") 'next-line)
-(global-set-key (kbd "C-c C-p") 'org-backward-element)
-(global-set-key (kbd "C-c C-n") 'org-forward-element)
-(global-set-key (kbd "M-}") 'outline-next-visible-heading)
-(global-set-key (kbd "M-{") 'outline-previous-visible-heading)
+
+;; Trying to swap keys, didnt work for combinations so i scrapped this idead
+;; (global-set-key (kbd "C-c C-p") (kbd "M-{"))
+;; (global-set-key (kbd "M-{") (kbd "C-c C-p"))
+
+(global-set-key (kbd "M-n") 'outline-next-visible-heading)
+(global-set-key (kbd "M-p") 'outline-previous-visible-heading)
+
 
 
 (provide 'init)
