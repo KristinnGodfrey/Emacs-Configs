@@ -1,3 +1,4 @@
+
 ;;; init.el --- Initialization file for Emacs
 ;;; package --- Summary
 ;;; Code:
@@ -12,16 +13,16 @@
 ;;
 ;;; License: GPLv3
 
-;;; System:
-
 ;; Without this comment emacs25 adds (package-initialize) here
 ;; (package-initialize)
 
 ;; Increase gc-cons-threshold, depending on your system you may set it back to a
 ;;lower value in your dotfile (function `dotspacemacs/user-config')
 (setq gc-cons-threshold 100000000)
+
 (defconst spacemacs-version         "0.200.13" "Spacemacs version.")
 (defconst spacemacs-emacs-min-version   "24.4" "Minimal version of Emacs.")
+
 (if (not (version<= spacemacs-emacs-min-version emacs-version))
     (error (concat "Your version of Emacs (%s) is too old. "
                    "Spacemacs requires Emacs version %s or above.")
@@ -38,24 +39,24 @@
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
-;;; Packages
+;; Packages:
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-;;; User Settings:
+;; User Settings:
 (setq org-image-actual-width '(300))
 (setq org-html-link-org-files-as-html nil)
 (setq org-image-actual-width 100)
 
-(add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))
-
 (setq org-toggle-inline-image nil)
 
-;;; Latex:
+(add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))
+
+;; Latex:
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 
-;;; Functions:
+;; Functions:
 (defun indent-file ()
   "Run org babel codeblock formatting in sequence."
   (interactive)
@@ -63,7 +64,7 @@
   (call-interactively 'indent-region)
 	(call-interactively 'goto-last-change))
 
-;;; Keybindings:
+;; Keybindings:
 (global-set-key (kbd "C-u") 'undo)
 (global-set-key (kbd "C-r") 'redo)
 (global-set-key (kbd "C-x s") 'save-buffer)
@@ -80,6 +81,7 @@
 (global-set-key (kbd "C-c C-n") 'org-forward-element)
 (global-set-key (kbd "M-}") 'outline-next-visible-heading)
 (global-set-key (kbd "M-{") 'outline-previous-visible-heading)
+
 
 (provide 'init)
 ;;; init.el ends here
