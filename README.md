@@ -10,6 +10,3 @@ I'm making the switch from Spacemacs to Doom. Doom should give me a better progr
 
 ## Spacemacs files
 I have all my configurations in the Spacemacs folder including settings for org-mode configurations, custom keybindings, export settings and inline-image dependencies for various filetypes.
-
-## Doom files
-Who knows? Looks pretty cool huh?
